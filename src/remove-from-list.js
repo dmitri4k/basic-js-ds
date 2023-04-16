@@ -23,31 +23,33 @@ const { ListNode } = require('../extensions/list-node.js');
  * }
 */
 function removeKFromList(l, k) {
-  let list = l
+  let head = l
   let prev
-  let current = list
-  
-  // if (list.value == k) {
-  //   list = list.next
-  // }
   let count
-  while (current)  {
-    if (current.value == k) {
-      if (count) {
-      } else {
-      prev = current
-    }
-      count = true
-    } else {
-      prev.next = current
-      prev = current
-      count = false
-    }
-    current = current.next
+  
+  // удаление первого совп. элемента
+  if (head.value == k) {
+    head = head.next 
   }
-  return list
+  let current = head
+  
+  while (current)  {
+    // if (current == head && head.value == k) {
+    //   head = head.next }
+    if (current.value == k) {
+      prev.next = current.next // пропуск     
+
+    } else {
+      prev = current // запоминаем предыдущий
+    }
+    
+    current = current.next // переход на следующий
+    
+  }
+  return head
 }
 
+// prev.next = current // устанавливаем ссылку в предыдущем      
 
 module.exports = {
   removeKFromList
