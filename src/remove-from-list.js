@@ -25,17 +25,17 @@ const { ListNode } = require('../extensions/list-node.js');
 function removeKFromList(l, k) {
   let head = l
   let prev
-  let count
-  
-  // удаление первого совп. элемента
-  if (head.value == k) {
-    head = head.next 
-  }
   let current = head
   
   while (current)  {
-    // if (current == head && head.value == k) {
-    //   head = head.next }
+
+    // удаление первого совп. элемента
+    if (current == head && current.value == k) {
+      head = head.next
+      current = current.next 
+      continue
+    }
+
     if (current.value == k) {
       prev.next = current.next // пропуск     
 
@@ -49,7 +49,6 @@ function removeKFromList(l, k) {
   return head
 }
 
-// prev.next = current // устанавливаем ссылку в предыдущем      
 
 module.exports = {
   removeKFromList
